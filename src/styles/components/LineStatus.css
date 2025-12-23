@@ -1,0 +1,61 @@
+.line-status-page {
+      padding: 40px;
+      background-color: var(--bg-dark);
+      /* Revert to Dark for S4 as per S1/S2/S5 logic usually */
+      min-height: calc(100vh - 60px);
+}
+
+.line-status-header h1 {
+      color: var(--text-primary);
+      border-bottom: 2px solid var(--accent-primary);
+      display: inline-block;
+      margin-bottom: 40px;
+      padding-bottom: 10px;
+}
+
+.line-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 30px;
+}
+
+.line-card {
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      justify-content: center;
+      min-height: 150px;
+}
+
+.line-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.line-card.success {
+      background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+      border: 1px solid #4caf50;
+      color: white;
+}
+
+.line-card.error {
+      background: linear-gradient(135deg, #b71c1c 0%, #c62828 100%);
+      border: 1px solid #ef5350;
+      color: white;
+}
+
+.line-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+}
+
+.line-indicator {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      letter-spacing: 1px;
+}

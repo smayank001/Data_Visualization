@@ -1,0 +1,158 @@
+.reports-page {
+      padding: 20px;
+      background-color: #fff;
+      min-height: 100vh;
+      color: #333;
+}
+
+.reports-header-row h2 {
+      color: #1a237e;
+      /* Dark Blue */
+      font-weight: bold;
+      margin-bottom: 20px;
+}
+
+.reports-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+}
+
+.shift-select {
+      background: #0d1b42;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      font-weight: bold;
+}
+
+.report-date-picker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #ccc;
+      padding: 8px 15px;
+      border-radius: 5px;
+}
+
+.report-date-picker input {
+      border: none;
+      background: transparent;
+      width: 130px;
+}
+
+/* Table */
+.reports-table-container {
+      overflow-x: auto;
+}
+
+.reports-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+}
+
+.reports-table th {
+      text-align: left;
+      padding: 15px 10px;
+      border-bottom: 2px solid #eee;
+      font-weight: bold;
+      color: #666;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+}
+
+.reports-table td {
+      padding: 15px 10px;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+}
+
+/* Row Strips / Highlights */
+.row-reject td {
+      /* background-color: #fff5f5; */
+      /* Optional hint */
+}
+
+.row-error {
+      background-color: #fafafa;
+      color: #d32f2f;
+      /* Highlight text? Image shows full row slightly distinct or just status */
+}
+
+/* Image shows explicit grey BG for some rows, but maybe alternating. Keeping simple clean white for now per image white bg. */
+
+.status-text {
+      font-weight: bold;
+}
+
+.status-text.success,
+.status-text.good {
+      color: #00c853;
+}
+
+.status-text.reject,
+.status-text.ng {
+      color: #d32f2f;
+}
+
+.status-text.error {
+      color: #ffab00;
+}
+
+.view-image-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      color: #1a237e;
+      font-weight: bold;
+      cursor: pointer;
+}
+
+/* Footer */
+.reports-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+}
+
+.page-btn {
+      border: none;
+      background: none;
+      cursor: pointer;
+}
+
+/* Modal */
+.image-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+}
+
+.image-modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 400px;
+      text-align: center;
+}
+
+.placeholder-image {
+      height: 200px;
+      background: #eee;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}

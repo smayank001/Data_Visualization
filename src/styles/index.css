@@ -1,0 +1,58 @@
+:root {
+  /* Colors - Industrial Dark Theme */
+  --bg-dark: #0f121a;
+  --bg-card: #1a1d26;
+  --bg-header: #14161f;
+  
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666;
+
+  /* Status Colors */
+  --status-success: #2e7d32;
+  --status-success-bg: rgba(46, 125, 50, 0.1);
+  --status-error: #c62828;
+  --status-error-bg: rgba(198, 40, 40, 0.1);
+  --status-warning: #f9a825;
+  --status-warning-bg: rgba(249, 168, 37, 0.1);
+  --status-info: #1565c0;
+
+  /* Accent */
+  --accent-primary: #1976d2; 
+  --border-color: #2c303b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark); 
+}
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444; 
+}
