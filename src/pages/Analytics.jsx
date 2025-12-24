@@ -46,30 +46,25 @@ import { useDashboard } from '../context/DashboardContext';
 
 // ... other imports ...
 
+import { useNavigate } from 'react-router-dom';
+
 const Analytics = () => {
-  const { stats } = useDashboard();
+  const { stats, updateFilter } = useDashboard();
+  const navigate = useNavigate();
+
+  const handleChartClick = (data) => {
+    if (data && data.activePayload) {
+       const time = data.activeLabel;
+       // Mock logic: Update global time filter and navigate
+       updateFilter('startTime', time);
+       navigate('/line-detail/13'); // Default to Line 13 for demo drill down
+    }
+  };
   
   return (
     <div className="analytics-page">
-      {/* Top Cards */}
-      <div className="analytics-header">
-        <div style={{position:'absolute', top: 20, right: 20}}>
-           <a href="/line-status" style={{padding: '8px 16px', background: '#333', color: 'white', borderRadius: 4, textDecoration: 'none'}}>NEXT SCREEN »</a>
-        </div>
-        <div className="status-card online">
-          <div className="status-number">{stats.success > 0 ? 3 : 0}</div> {/* Mock logic for demo */}
-          <div className="status-label">online</div>
-        </div>
-        <div className="status-card offline">
-          <div className="status-number">{stats.error}</div>
-          <div className="status-label">Offline</div>
-        </div>
-        <div className="status-card total">
-          <div className="status-number">{stats.total}</div>
-          <div className="status-label">Total Machines</div>
-        </div>
-      </div>
-
+      {/* ... header ... */}
+      
       <div className="analytics-grid">
         {/* Left Column */}
         <div className="analytics-left">
@@ -79,7 +74,7 @@ const Analytics = () => {
             <h3>Performance</h3>
             <div className="chart-wrapper">
                <ResponsiveContainer width="100%" height={250}>
-                 <AreaChart data={performanceData}>
+                 <AreaChart data={performanceData} onClick={handleChartClick} style={{cursor: 'pointer'}}>
                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#333" />
                    <XAxis dataKey="time" stroke="#666" fontSize={12} />
                    <YAxis stroke="#666" fontSize={12} />

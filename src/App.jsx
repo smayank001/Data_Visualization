@@ -12,6 +12,7 @@ import LineStatus from './pages/LineStatus';
 // const LineStatus = () => <div style={{padding: 20}}><h2>Screen 4: Status Overview</h2></div>;
 import LineDetail from './pages/LineDetail';
 import Reports from './pages/Reports';
+import ImageStore from './pages/ImageStore';
 // const LineDetail = () => <div style={{padding: 20}}><h2>Screen 5: Line 13 Detail</h2></div>;
 
 import { DashboardProvider } from './context/DashboardContext';
@@ -29,7 +30,7 @@ function App() {
             <Route path="line-status" element={<LineStatus />} />
             <Route path="line-detail/:lineId" element={<LineDetail />} />
             <Route path="ocr-history" element={<Reports />} />
-            <Route path="image-store" element={<div>Image Store (Future)</div>} />
+            <Route path="image-store" element={<ImageStore />} />
           </Route>
         </Routes>
       </Router>

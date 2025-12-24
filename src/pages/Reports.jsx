@@ -1,46 +1,57 @@
 import React, { useState } from 'react';
 import { useDashboard } from '../context/DashboardContext';
 import { Eye, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/components/Reports.css';
 
 const Reports = () => {
-  const { allScans } = useDashboard(); // Use allScans or filteredScans? Image implies specific report filters.
-  const [reportFilters, setReportFilters] = useState({
-      shift: 'Shift 1',
-      date: '2026-01-01'
-  });
+  const { allScans, filters, updateFilter } = useDashboard(); 
+  const navigate = useNavigate();
   const [modalImage, setModalImage] = useState(null);
 
   // Mock Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
-  // Format date helper
+  // Filter logic can happen here or via context derived stats unique to reports?
+  // Let's filter locally for the specific report table helper if needed or use global
+  const reportRows = allScans.filter(s => {
+       // Apply global filters
+       if(filters.date && !s.timestamp.includes(filters.date)) return false;
+       if(filters.shift && filters.shift !== 'All') {
+           // mock shift logic
+           return true; 
+       }
+       return true;
+  });
+
   const formatDateParts = (timestamp) => {
-      // Mock parsing "05-23-2025 09:20:22 AM"
-      const dateObj = new Date(timestamp); 
-      // Fallback for mock strings if Date parse fails (mock data uses MM-DD-YYYY)
-      // simplistic split for demo
-      const parts = timestamp.split(' ')[0].split('-'); // 05, 23, 2025
-      return { 
-          year: parts[2] || '2026', 
-          month: 'Jan', // Mock logic for demo
-          day: parts[1] || '01',
-          time: timestamp.split(' ')[1] || '11:09'
-      };
+// ... existing helper logic ...
   };
 
   const offset = (currentPage - 1) * itemsPerPage;
-  const currentRows = allScans.slice(offset, offset + itemsPerPage);
+  const currentRows = reportRows.slice(offset, offset + itemsPerPage); // Use filtered rows
 
   return (
     <div className="reports-page">
        <div className="reports-header-row">
-          <h2>Reports</h2>
+          <div style={{display:'flex', alignItems:'center', gap: 10}}>
+             <button onClick={() => navigate('/line-detail/13')} style={{background: 'none', border:'none', color: '#1a237e', cursor:'pointer', fontSize: 24}}>«</button>
+             <h2>Reports</h2>
+          </div>
+          {/* Mock Download Buttons found in constraint */}
+          <div style={{display:'flex', gap: 10}}>
+             <button onClick={() => alert("Downloading CSV Report...")} style={{padding: '5px 10px', background: '#4CAF50', color:'#fff', border:'none', cursor:'pointer'}}>Download CSV</button>
+             <button onClick={() => alert("Downloading PDF Report...")} style={{padding: '5px 10px', background: '#2196F3', color:'#fff', border:'none', cursor:'pointer'}}>Download PDF</button>
+          </div>
        </div>
 
        <div className="reports-controls">
-          <select className="shift-select" value={reportFilters.shift} onChange={(e) => setReportFilters({...reportFilters, shift: e.target.value})}>
+          <select 
+             className="shift-select" 
+             value={filters.shift || 'Shift 1'} 
+             onChange={(e) => updateFilter('shift', e.target.value)}
+          >
              <option>Shift 1</option>
              <option>Shift 2</option>
              <option>Shift 3</option>
@@ -50,8 +61,8 @@ const Reports = () => {
              <Calendar size={18} />
              <input 
                type="date" 
-               value={reportFilters.date} 
-               onChange={(e) => setReportFilters({...reportFilters, date: e.target.value})} 
+               value={filters.date || ''} 
+               onChange={(e) => updateFilter('date', e.target.value)} 
              />
           </div>
        </div>
@@ -87,7 +98,7 @@ const Reports = () => {
                            </td>
                            <td>-</td>
                            <td>
-                              <button className="view-image-btn" onClick={() => setModalImage(row.id)}>
+                              <button className="view-image-btn" onClick={() => navigate('/image-store')}>
                                  <Eye size={16} /> View Image
                               </button>
                            </td>

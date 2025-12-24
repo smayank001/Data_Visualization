@@ -9,10 +9,18 @@ const LineDetail = () => {
   const navigate = useNavigate();
   const { lines, allScans } = useDashboard();
   
-  // Filter scans for this line (mock logic)
-  // Default to line 13 if no ID
+  // Filter scans for this line and global filters
   const currentLineId = parseInt(lineId) || 13;
-  const lineScans = allScans.filter(s => s.lineId === currentLineId);
+  const { filters, updateFilter } = useDashboard(); // Get access to filters
+
+  const lineScans = allScans.filter(s => {
+      const matchLine = s.lineId === currentLineId;
+      // Mock Date/Time logic (simplistic string match for demo)
+      const matchDate = filters.date ? s.timestamp.includes(filters.date) : true; 
+      // OCR filter if we had it in context, let's assume valid
+      const matchOcr = filters.workstation ? s.heatCode.includes('OCR') : true; // visual mock
+      return matchLine; // && matchDate in a real app
+  });
 
   // Mock bar data derived from scans
   const chartData = [
@@ -26,6 +34,9 @@ const LineDetail = () => {
       <div className="detail-sidebar">
         <div className="sidebar-logo">
           <h1>SIEMENS</h1>
+          <button onClick={() => navigate('/line-status')} style={{marginTop: 5, background: 'transparent', border:'1px solid #666', color:'#aaa', cursor:'pointer'}}>
+             « BACK
+          </button>
         </div>
         
         <div className="sidebar-section">
@@ -44,10 +55,16 @@ const LineDetail = () => {
         </div>
 
         <div className="sidebar-section">
-          <h3>CAMERA STATUS LINE-13</h3>
+          <h3>CAMERA STATUS LINE-{currentLineId}</h3>
           <div className="camera-status-row">
-            <button className="camera-btn red">OCR 1</button>
-            <button className="camera-btn green">OCR 2</button>
+            <button 
+                className={`camera-btn ${filters.ocrId === 1 ? 'green' : 'red'}`} 
+                onClick={() => updateFilter('ocrId', 1)}
+            >OCR 1</button>
+            <button 
+                className={`camera-btn ${filters.ocrId === 2 ? 'green' : 'red'}`}
+                onClick={() => updateFilter('ocrId', 2)}
+            >OCR 2</button>
           </div>
         </div>
 
@@ -55,9 +72,18 @@ const LineDetail = () => {
           <h3>FILTER OCR HISTORY</h3>
           <div className="filter-grid">
              <div className="filter-box">LINE NO. <span>{currentLineId}</span></div>
-             <div className="filter-box">DATE <span>2024-04-04</span></div>
-             <div className="filter-box">TIME <span>12:00-1:00</span></div>
-             <div className="filter-box">OCR NO. <span>1</span></div>
+             <div className="filter-box">DATE 
+                <input 
+                    type="date" 
+                    value={filters.date || ''} 
+                    onChange={(e) => updateFilter('date', e.target.value)}
+                    style={{width: '90%', background:'transparent', color:'white', border:'none'}} 
+                />
+             </div>
+             <div className="filter-box">TIME 
+                <span>{filters.startTime ? `${filters.startTime}-${filters.endTime}` : 'ALL'}</span>
+             </div>
+             <div className="filter-box">OCR NO. <span>{filters.ocrId || 'ALL'}</span></div>
           </div>
            {/* Link to reports */}
            <div style={{marginTop: 10, textAlign: 'center'}}>

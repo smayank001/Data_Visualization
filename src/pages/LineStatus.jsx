@@ -11,6 +11,9 @@ const LineStatus = () => {
     <div className="line-status-page">
       <div className="line-status-header">
         <h1>Line Status Overview</h1>
+        <button onClick={() => navigate('/analytics')} style={{padding: '8px 16px', background: '#1e88e5', color: 'white', border: 'none', borderRadius: 4, cursor:'pointer'}}>
+           VIEW ANALYTICS »
+        </button>
       </div>
       
       <div className="line-grid">
