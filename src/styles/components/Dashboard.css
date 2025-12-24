@@ -172,3 +172,82 @@
       font-size: 0.85rem;
       cursor: pointer;
 }
+
+/* ========== RESPONSIVE STYLES ========== */
+
+/* Mobile Styles (< 768px) */
+@media (max-width: 768px) {
+      .kpi-container {
+            flex-direction: column;
+            gap: 15px;
+            padding: 15px;
+      }
+
+      .kpi-card {
+            width: 100%;
+            padding: 10px;
+            background: #23262f;
+            border-radius: 8px;
+      }
+
+      .filter-bar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 15px;
+      }
+
+      .search-input-wrapper {
+            width: 100%;
+      }
+
+      .filters-group {
+            flex-wrap: wrap;
+            gap: 10px;
+      }
+
+      .dropdown,
+      .date-picker,
+      .time-picker {
+            flex: 1;
+            min-width: 120px;
+      }
+
+      .apply-btn {
+            width: 100%;
+      }
+
+      .scan-table-container {
+            overflow-x: auto;
+      }
+
+      .scan-table th,
+      .scan-table td {
+            padding: 10px;
+            font-size: 0.85rem;
+      }
+}
+
+/* Tablet Styles (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+      .kpi-container {
+            flex-wrap: wrap;
+            gap: 15px;
+      }
+
+      .kpi-card {
+            flex: 1 1 calc(50% - 15px);
+            min-width: 200px;
+      }
+
+      .filter-bar {
+            flex-wrap: wrap;
+      }
+
+      .search-input-wrapper {
+            width: 250px;
+      }
+
+      .filters-group {
+            flex-wrap: wrap;
+      }
+}

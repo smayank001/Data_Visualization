@@ -319,3 +319,144 @@
       color: #555;
       width: 100%;
 }
+
+/* ========== RESPONSIVE STYLES ========== */
+
+/* Mobile Styles (< 768px) */
+@media (max-width: 768px) {
+      .analytics-page {
+            padding: 15px;
+      }
+
+      .analytics-header {
+            flex-direction: column;
+            gap: 15px;
+      }
+
+      .status-card {
+            padding: 20px;
+      }
+
+      .status-number {
+            font-size: 2.5rem;
+      }
+
+      .analytics-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+      }
+
+      .chart-card {
+            padding: 15px;
+      }
+
+      .card-header-select {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+      }
+
+      .select-box {
+            width: 100%;
+      }
+
+      .chart-kpi-row {
+            flex-wrap: wrap;
+            gap: 8px;
+      }
+
+      .chart-kpi-box {
+            flex: 1 1 calc(50% - 8px);
+            min-width: 120px;
+      }
+
+      .timeline-legend {
+            justify-content: center;
+            flex-wrap: wrap;
+      }
+
+      .timeline-bar-container {
+            height: 30px;
+      }
+
+      .availability-kpis {
+            flex-direction: column;
+            gap: 8px;
+      }
+
+      .kpi-avail {
+            padding: 15px;
+      }
+
+      .oee-circle {
+            width: 100px;
+            height: 100px;
+            font-size: 1.3rem;
+      }
+
+      .oee-stats-row {
+            flex-direction: column;
+            gap: 10px;
+      }
+
+      .oee-stat {
+            margin: 0;
+      }
+}
+
+/* Tablet Styles (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+      .analytics-page {
+            padding: 18px;
+      }
+
+      .analytics-grid {
+            grid-template-columns: 1fr;
+      }
+
+      .chart-kpi-row {
+            flex-wrap: wrap;
+      }
+
+      .chart-kpi-box {
+            flex: 1 1 calc(25% - 10px);
+            min-width: 100px;
+      }
+
+      .oee-stats-row {
+            flex-wrap: wrap;
+      }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 480px) {
+      .analytics-page {
+            padding: 10px;
+      }
+
+      .status-number {
+            font-size: 2rem;
+      }
+
+      .status-label {
+            font-size: 0.9rem;
+      }
+
+      .chart-card h3 {
+            font-size: 0.9rem;
+      }
+
+      .chart-kpi-box {
+            flex: 1 1 100%;
+      }
+
+      .timeline-axis {
+            font-size: 0.6rem;
+      }
+
+      .oee-circle {
+            width: 80px;
+            height: 80px;
+            font-size: 1.1rem;
+      }
+}

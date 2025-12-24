@@ -1,0 +1,143 @@
+/* MainLayout.css - Responsive Layout Styles */
+
+.layout-container {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      background: #f5f7fa;
+}
+
+/* Sidebar Styles */
+.sidebar {
+      width: 260px;
+      background: #0a0e17;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #1f2937;
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
+}
+
+.sidebar-logo {
+      padding: 30px 24px;
+      margin-bottom: 20px;
+}
+
+.sidebar-logo h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 0;
+}
+
+.sidebar-nav {
+      flex: 1;
+      padding: 0 12px;
+}
+
+.nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      text-decoration: none;
+      color: #9ca3af;
+      background: transparent;
+      font-weight: 500;
+      transition: all 0.2s;
+}
+
+.nav-item:hover {
+      background: #1a1e2a;
+}
+
+.nav-item.active {
+      color: #fff;
+      background: #1f2937;
+}
+
+/* Main Content */
+.main-content {
+      flex: 1;
+      overflow-y: auto;
+      position: relative;
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      background: #0a0e17;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-toggle:hover {
+      background: #1f2937;
+}
+
+/* Overlay for mobile sidebar */
+.sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+      .sidebar {
+            position: fixed;
+            left: -260px;
+            top: 0;
+            height: 100vh;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .sidebar.open {
+            left: 0;
+      }
+
+      .sidebar-overlay.visible {
+            display: block;
+      }
+
+      .mobile-toggle {
+            display: block;
+      }
+
+      .main-content {
+            width: 100%;
+      }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+      .sidebar {
+            width: 200px;
+      }
+
+      .sidebar-logo h1 {
+            font-size: 1.3rem;
+      }
+
+      .nav-item {
+            padding: 10px 12px;
+            font-size: 0.9rem;
+      }
+}

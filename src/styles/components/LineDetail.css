@@ -233,3 +233,133 @@
       cursor: pointer;
       text-decoration: underline;
 }
+
+/* ========== RESPONSIVE STYLES ========== */
+
+/* Mobile Styles (< 768px) */
+@media (max-width: 768px) {
+      .line-detail-container {
+            flex-direction: column;
+      }
+
+      .detail-sidebar {
+            width: 100%;
+            max-height: 50vh;
+            overflow-y: auto;
+      }
+
+      .sidebar-logo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+      }
+
+      .line-status-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+      }
+
+      .camera-status-row {
+            flex-direction: row;
+      }
+
+      .filter-grid {
+            grid-template-columns: 1fr;
+            gap: 8px;
+      }
+
+      .detail-main {
+            padding: 15px;
+      }
+
+      .detail-top-row {
+            flex-direction: column;
+            gap: 15px;
+      }
+
+      .kpi-box {
+            width: 100%;
+            height: auto;
+            padding: 15px;
+      }
+
+      .image-store-box {
+            width: 100%;
+      }
+
+      .image-store-box button {
+            width: 100%;
+      }
+
+      .detail-chart-panel {
+            width: 100%;
+      }
+
+      .detail-chart-panel h3 {
+            font-size: 1rem;
+      }
+
+      .detail-table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+      }
+
+      .detail-table {
+            font-size: 0.8rem;
+      }
+
+      .detail-table th,
+      .detail-table td {
+            padding: 6px 8px;
+            white-space: nowrap;
+      }
+}
+
+/* Tablet Styles (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+      .detail-sidebar {
+            width: 250px;
+      }
+
+      .sidebar-logo h1 {
+            font-size: 1.3rem;
+      }
+
+      .line-status-grid {
+            grid-template-columns: repeat(2, 1fr);
+      }
+
+      .detail-top-row {
+            flex-wrap: wrap;
+      }
+
+      .kpi-box {
+            width: 130px;
+            height: 70px;
+      }
+
+      .detail-chart-panel {
+            flex: 1;
+            min-width: 280px;
+      }
+
+      .detail-table {
+            font-size: 0.85rem;
+      }
+}
+
+/* Landscape Mobile (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
+      .line-detail-container {
+            flex-direction: row;
+      }
+
+      .detail-sidebar {
+            width: 280px;
+            max-height: 100vh;
+      }
+
+      .detail-top-row {
+            flex-wrap: wrap;
+      }
+}
